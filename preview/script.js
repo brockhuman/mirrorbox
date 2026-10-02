@@ -24,37 +24,14 @@ const useViewport = () => {
 };
 
 const ASSETS = [
-{
-  title: 'Sidewalk',
-  src: 'https://images.unsplash.com/photo-1779525822769-d1bbd2c0e4bd?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-
-{
-  title: 'Red roof',
-  src: 'https://images.unsplash.com/photo-1779525822818-07a55330f964?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-
-{
-  title: 'Signs',
-  src: 'https://images.unsplash.com/photo-1779525822831-a3f03711c7d7?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-
-{
-  title: 'Speed limit',
-  src: 'https://images.unsplash.com/photo-1779525822819-8ddef8f8ee18?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-
-{
-  title: 'Lilac tree',
-  src: 'https://images.unsplash.com/photo-1779525822839-26386802c4fd?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-
-{
-  title: 'Light-colored house',
-  src: 'https://images.unsplash.com/photo-1778494824647-af2adeacd8b8?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-
-{
-  title: 'Street light pole',
-  src: 'https://images.unsplash.com/photo-1779525822731-4bde2805c932?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-
-{
-  title: 'Tree-lined street',
-  src: 'https://images.unsplash.com/photo-1779618258222-556cd048c6d0?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }];
+{ title: 'Bearded man in a cap', src: './photos/portrait-1.jpg' },
+{ title: 'Woman holding a box', src: './photos/portrait-2.jpg' },
+{ title: 'Man with spectacles and beard', src: './photos/portrait-3.jpg' },
+{ title: 'Woman in a headscarf', src: './photos/portrait-4.jpg' },
+{ title: 'Woman in profile', src: './photos/portrait-5.jpg' },
+{ title: 'Bearded man with skullcap', src: './photos/portrait-6.jpg' },
+{ title: 'Young woman in profile', src: './photos/portrait-7.jpg' },
+{ title: 'Man with glasses and full beard', src: './photos/portrait-8.jpg' }];
 
 
 
