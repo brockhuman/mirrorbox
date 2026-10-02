@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "https://esm.sh/react@19";
+import React, { useState, useEffect, useMemo, useRef } from "https://esm.sh/react@19";
 import { createRoot } from "https://esm.sh/react-dom@19/client";
 import { motion, arc } from "https://esm.sh/motion/react";
 import { ChevronLeft, ChevronRight } from "https://esm.sh/lucide-react";
@@ -58,10 +58,24 @@ const App = () => {
     setActiveIndex(index);
   };
 
-  return /*#__PURE__*/(
-    React.createElement("div", { className: "antialiased text-neutral-800 flex items-center justify-center" }, /*#__PURE__*/
+  // swipe left/right on touch screens
+  const touchStart = useRef(null);
+  const onTouchStart = e => {
+    touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  };
+  const onTouchEnd = e => {
+    if (!touchStart.current) return;
+    const dx = e.changedTouches[0].clientX - touchStart.current.x;
+    const dy = e.changedTouches[0].clientY - touchStart.current.y;
+    touchStart.current = null;
+    if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+    dx < 0 ? toNext() : toPrev();
+  };
 
-    React.createElement("div", { className: "h-[400px] pb-20 flex justify-center items-end gap-3 transform-3d -rotate-x-10 rotate-y-50" },
+  return /*#__PURE__*/(
+    React.createElement("div", { className: "antialiased text-neutral-800 flex items-center justify-center w-screen h-dvh overflow-hidden touch-pan-y", onTouchStart, onTouchEnd }, /*#__PURE__*/
+
+    React.createElement("div", { className: "h-[400px] pb-20 flex justify-center items-end gap-3 transform-3d -rotate-x-10 rotate-y-50 max-sm:translate-x-4 max-sm:scale-[0.8]" },
     ASSETS.map((el, i) => {
       const isActive = activeIndex === i;
       {/* put perspective here so the rotation won't be from small to large */}
@@ -87,23 +101,25 @@ const App = () => {
 
 
 
-    React.createElement("div", { className: "fixed bottom-4 left-0 right-0 w-fit px-2 mx-auto flex items-center gap-4 justify-center text-neutral-700 rounded-full bg-neutral-200/50 backdrop-blur-xs border border-neutral-200/80 shadow-sm" }, /*#__PURE__*/
+    React.createElement("div", { className: "fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-0 right-0 w-fit px-2 mx-auto flex items-center gap-4 justify-center text-neutral-700 rounded-full bg-neutral-200/50 backdrop-blur-xs border border-neutral-200/80 shadow-sm" }, /*#__PURE__*/
 
-    React.createElement("button", { onClick: toPrev, className: "p-2 cursor-pointer" }, /*#__PURE__*/
+    React.createElement("button", { onClick: toPrev, "aria-label": "Previous photo", className: "p-3 cursor-pointer" }, /*#__PURE__*/
     React.createElement(ChevronLeft, null)), /*#__PURE__*/
 
 
-    React.createElement("div", { className: "w-[180px] flex justify-center items-center gap-2" },
+    React.createElement("div", { className: "w-[180px] flex justify-center items-center" },
     ASSETS.map((_, i) => /*#__PURE__*/
     React.createElement("div", {
       key: i,
       onClick: () => toSlide(i),
-      className: `rounded-full cursor-pointer h-2 transition-[width,background-color] duration-300 ${activeIndex === i ? 'w-7 bg-current' : 'w-2 bg-current/30'}` }))), /*#__PURE__*/
+      className: "py-4 px-1 cursor-pointer" }, /*#__PURE__*/
+    React.createElement("div", {
+      className: `rounded-full cursor-pointer h-2 transition-[width,background-color] duration-300 ${activeIndex === i ? 'w-7 bg-current' : 'w-2 bg-current/30'}` })))), /*#__PURE__*/
 
 
 
 
-    React.createElement("button", { onClick: toNext, className: "p-2 cursor-pointer" }, /*#__PURE__*/
+    React.createElement("button", { onClick: toNext, "aria-label": "Next photo", className: "p-3 cursor-pointer" }, /*#__PURE__*/
     React.createElement(ChevronRight, null)))));
 
 
